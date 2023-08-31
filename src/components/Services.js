@@ -1,5 +1,4 @@
 import React from "react";
-import { BsArrowUpRight } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
 
@@ -56,7 +55,7 @@ const Services = () => {
             <div>
               {services.map((service, index) => {
                 // destructure service
-                const { name, description, link } = service;
+                const { name, description } = service;
                 return (
                   <div
                     className="border-b border-white/20 h-[166px] mb-[38px] flex"
@@ -78,7 +77,7 @@ const Services = () => {
                         <BsArrowUpRight />
                       </a> */}
                       {/* <a href="#" className="text-gradient text-sm">
-                        {link}
+                        
                       </a> */}
                     </div>
                   </div>

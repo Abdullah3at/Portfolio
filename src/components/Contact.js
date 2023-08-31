@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,7 +8,6 @@ import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const form = useRef();
-  // const [messageSent, setMessageSent] = useState(false);
 
   const notify = () => {
     toast.success("🤝 Thanks for Reaching Out!", {
