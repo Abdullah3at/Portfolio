@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../assets/logo.svg";
-import Resume from "../assets/resume.pdf";
+import ResumePDF from "../assets/resume.pdf";
 
 const Header = () => {
   return (
@@ -27,7 +27,7 @@ const Header = () => {
                 d="M9 5l7 7-7 7"
               ></path>
             </svg>
-            <a href={Resume} download="Resume">
+            <a href={ResumePDF} download="Resume">
               Download Resume
             </a>
           </button>
