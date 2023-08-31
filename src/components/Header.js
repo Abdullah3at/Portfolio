@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../assets/logo.svg";
-import ResumePDF from "../assets/resume.pdf";
+import ResumePDF from "../resume.pdf";
 
 const Header = () => {
   return (
