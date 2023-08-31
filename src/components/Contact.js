@@ -9,23 +9,42 @@ import emailjs from "@emailjs/browser";
 const Contact = () => {
   const form = useRef();
 
-  const notify = () => {
-    toast.success("🤝 Thanks for Reaching Out!", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+  const notify = (isValidEmail) => {
+    if (isValidEmail) {
+      toast.success("🤝 Thanks for Reaching Out!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      toast.error("Please enter a valid email address!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
 
   const sendEmail = (e) => {
     e.preventDefault();
-    console.log("window");
-    // setMessageSent(true);
+
+    const emailInput = form.current.querySelector('input[name="user_email"]');
+    const isValidEmail = emailInput.checkValidity();
+
+    if (!isValidEmail) {
+      notify(false); // Pass false if email is not valid
+      return;
+    }
 
     emailjs
       .sendForm(
@@ -38,6 +57,7 @@ const Contact = () => {
         (result) => {
           console.log(result.text);
           console.log("message Sent");
+          notify(true); // Pass true if email is valid
         },
         (error) => {
           console.log(error.text);
@@ -87,13 +107,14 @@ const Contact = () => {
               type="email"
               placeholder="Your email"
               name="user_email"
+              required
             />
             <textarea
               className="bg-transparent border-b py-12 outline-none w-full placeholder:text-white focus:border-accent transition-all resize-none mb-12"
               placeholder="Your message"
               name="message"
             ></textarea>
-            <button onClick={notify} className="btn btn-lg">
+            <button onClick={sendEmail} className="btn btn-lg">
               Send message
             </button>
             <ToastContainer />
