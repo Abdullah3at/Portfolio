@@ -8,9 +8,10 @@ const Header = () => {
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           {/* logo */}
-          <a href="#">
+
+          <button className="cursor-auto" href="#">
             <img src={Logo} alt="" />
-          </a>
+          </button>
           {/* button */}
           <button class="transition duration-1000 ease-in-out bg-transparent hover:bg-transparent text-white-500 font-bold py-2 px-5 text-lg rounded-full">
             <svg
